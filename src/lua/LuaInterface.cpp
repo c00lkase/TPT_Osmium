@@ -388,9 +388,8 @@ static int activeMenu(lua_State *L)
 		lua_pushinteger(L, lsi->gameModel->GetActiveMenu());
 		return 1;
 	}
-	auto &sd = SimulationData::CRef();
 	int menuid = luaL_checkint(L, 1);
-	if (menuid >= 0 && menuid < int(sd.msections.size()))
+	if (menuid >= 0 && menuid < SC_TOTAL)
 		lsi->gameController->SetActiveMenu(menuid);
 	else
 		return luaL_error(L, "Invalid menu");
@@ -400,11 +399,8 @@ static int activeMenu(lua_State *L)
 static int menuEnabled(lua_State *L)
 {
 	int menusection = luaL_checkint(L, 1);
-	{
-		auto &sd = SimulationData::CRef();
-		if (menusection < 0 || menusection >= int(sd.msections.size()))
-			return luaL_error(L, "Invalid menu");
-	}
+	if (menusection < 0 || menusection >= SC_TOTAL)
+		return luaL_error(L, "Invalid menu");
 	int acount = lua_gettop(L);
 	if (acount == 1)
 	{

@@ -75,7 +75,6 @@ void ScrollPanel::XOnMouseDown(int x, int y, unsigned int button)
 {
 	if (MouseDownInside)
 	{
-		CancelPanning();
 		if (isMouseInsideScrollbar)
 		{
 			scrollbarSelected = true;
@@ -87,31 +86,24 @@ void ScrollPanel::XOnMouseDown(int x, int y, unsigned int button)
 	}
 }
 
-void ScrollPanel::CancelPanning()
-{
-	panning = false;
-	panHistory = {};
-	yScrollVel = 0;
-}
-
 void ScrollPanel::XOnMouseUp(int x, int y, unsigned int button)
 {
 	scrollbarSelected = false;
-	auto oldPanHistory = panHistory;
-	CancelPanning();
+	panning = false;
 	{
-		auto it = oldPanHistory.end();
-		while (it != oldPanHistory.begin() && *(it - 1))
+		auto it = panHistory.end();
+		while (it != panHistory.begin() && *(it - 1))
 		{
 			--it;
 		}
-		if (it < oldPanHistory.end())
+		if (it < panHistory.end())
 		{
-			auto offsetYDiff = oldPanHistory.back()->offsetY - (*it)->offsetY;
-			auto tickDiff = oldPanHistory.back()->ticks - (*it)->ticks;
+			auto offsetYDiff = panHistory.back()->offsetY - (*it)->offsetY;
+			auto tickDiff = panHistory.back()->ticks - (*it)->ticks;
 			yScrollVel += offsetYDiff / tickDiff * (1000.f / Engine::Ref().GetFps());
 		}
 	}
+	panHistory = {};
 	isMouseInsideScrollbarArea = false;
 	scrollbarClickLocation = 0;
 }

@@ -6,8 +6,8 @@ void Element::Element_BIZRG()
 	Identifier = "DEFAULT_PT_BIZRG";
 	Name = "BIZG";
 	Colour = 0x00FFBB_rgb;
-	MenuVisible = 0;
-	MenuSection = SC_GAS;
+	MenuVisible = 1;
+	MenuSection = SC_CRACKER2;
 	Enabled = 1;
 
 	Advection = 1.0f;

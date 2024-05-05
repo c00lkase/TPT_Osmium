@@ -18,7 +18,7 @@ class SearchModel
 {
 private:
 	std::unique_ptr<http::SearchSavesRequest> searchSaves;
-	void BeginSearchSaves(int start, int count, String query, http::Period period, http::Sort sort, http::Category category);
+	void BeginSearchSaves(int start, int count, String query, http::Sort sort, http::Category category);
 	std::vector<std::unique_ptr<SaveInfo>> EndSearchSaves();
 
 	void BeginGetTags(int start, int count, String query);
@@ -26,7 +26,6 @@ private:
 	std::unique_ptr<http::SearchTagsRequest> getTags;
 
 	std::unique_ptr<SaveInfo> loadedSave;
-	http::Period currentPeriod;
 	http::Sort currentSort;
 	String lastQuery;
 	String lastError;
@@ -43,7 +42,6 @@ private:
 	void notifyTagListChanged();
 	void notifySelectedChanged();
 	void notifyPageChanged();
-	void notifyPeriodChanged();
 	void notifySortChanged();
 	void notifyShowOwnChanged();
 	void notifyShowFavouriteChanged();
@@ -63,8 +61,6 @@ public:
 	int GetPageCount();
 	int GetPageNum() { return currentPage; }
 	String GetLastQuery() { return lastQuery; }
-	void SetPeriod(http::Period period) { if(!searchSaves) { currentPeriod = period; } notifyPeriodChanged(); }
-	http::Period GetPeriod() { return currentPeriod; }
 	void SetSort(http::Sort sort) { if(!searchSaves) { currentSort = sort; } notifySortChanged(); }
 	http::Sort GetSort() { return currentSort; }
 	void SetShowOwn(bool show) { if(!searchSaves) { if(show!=showOwn) { showOwn = show; } } notifyShowOwnChanged();  }

@@ -93,6 +93,8 @@ static std::vector<menu_section> LoadMenus()
 		{0xE057, String("Tools"), 0, 1},
 		{0xE067, String("Favorites"), 0, 1},
 		{0xE064, String("Decoration tools"), 0, 1},
+		{0xE048, String("Cracker"), 0, 0},
+		{0xE048, String("Cracker!"), 0, 0},
 	};
 }
 
@@ -184,14 +186,16 @@ void SimulationData::init_can_move()
 		if (elements[movingType].Properties & TYPE_PART)
 			can_move[movingType][PT_SAWD] = 0;
 	}
-
+	//a list of lots of things PHOT can move through
+	// TODO: replace with property
 	for (destinationType = 0; destinationType < PT_NUM; destinationType++)
 	{
-		//a list of lots of things PHOT can move through
-		if (elements[destinationType].Properties & PROP_PHOTPASS)
+		if (destinationType == PT_GLAS || destinationType == PT_PHOT || destinationType == PT_FILT || destinationType == PT_INVIS
+		 || destinationType == PT_CLNE || destinationType == PT_PCLN || destinationType == PT_BCLN || destinationType == PT_PBCN
+		 || destinationType == PT_WATR || destinationType == PT_DSTW || destinationType == PT_SLTW || destinationType == PT_GLOW
+		 || destinationType == PT_ISOZ || destinationType == PT_ISZS || destinationType == PT_QRTZ || destinationType == PT_PQRT
+		 || destinationType == PT_H2   || destinationType == PT_BGLA || destinationType == PT_C5 || destinationType == PT_RSST)
 			can_move[PT_PHOT][destinationType] = 2;
-
-		//Things PROT and GRVT cannot move through
 		if (destinationType != PT_DMND && destinationType != PT_INSL && destinationType != PT_VOID && destinationType != PT_PVOD && destinationType != PT_VIBR && destinationType != PT_BVBR && destinationType != PT_PRTI && destinationType != PT_PRTO)
 		{
 			can_move[PT_PROT][destinationType] = 2;
