@@ -34,6 +34,6 @@ Osmium is a very good conductor, like GOLD. This in combination with it's streng
 
 
 # Osmium Tetroxide Element
-Osmium Tetroxide doesn't react with any element, it only undergoes nuclear fission when it's temperature is above 9000°C and the pressure is above 200.
+Osmium Tetroxide doesn't react with any element, it's only reaction is when it undergoes nuclear fission when it's temperature is above 9000°C and the pressure is above 200.
 
 <img src="https://github.com/c00lkase/TPT_Osmium/assets/90591350/7ed54bd5-2eca-41ca-881f-19dbad4dfa0d" width="300"/>
