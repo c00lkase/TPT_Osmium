@@ -23,7 +23,7 @@ The final reaction with osmium happens with ISOZ, and it forms POLO from it. Thi
 
 ## Other Properties
 
-Osmium also is relatively strong, if you dont touch it with it's reactants it will only break when heated to 3,033°C *(5,491°F)*.
+Osmium also is relatively strong, if you dont touch it with it's reactants it will only break when heated to 3,033°C *(5,491°F)*. It's strength also causes it to block any pressure.
 
 <img src="https://github.com/c00lkase/TPT_Osmium/assets/90591350/492a2622-fa3a-46dd-9884-5e1f158f1bf6" width="300"/>
 
